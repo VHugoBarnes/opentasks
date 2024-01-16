@@ -3,7 +3,7 @@ import { SignIn } from "@clerk/nextjs";
 
 export default function LoginPage() {
   return (
-    <div>
+    <div className="grid place-content-center h-svh">
       <SignIn />
     </div>
   );
