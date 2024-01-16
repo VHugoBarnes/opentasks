@@ -30,7 +30,7 @@ export default function RootLayout({ children }: Props) {
       }}
     >
       <html lang="en">
-        <body className={`${inter.className} bg-neutral-900`}>{children}</body>
+        <body className={`${inter.className} bg-neutral-900 text-neutral-200`}>{children}</body>
       </html>
     </ClerkProvider>
   );
