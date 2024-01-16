@@ -4,7 +4,9 @@ import { SignIn } from "@clerk/nextjs";
 export default function LoginPage() {
   return (
     <div className="grid place-content-center h-svh">
-      <SignIn />
+      <SignIn
+        signUpUrl="/auth/signup"
+      />
     </div>
   );
 };
