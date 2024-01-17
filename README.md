@@ -28,3 +28,6 @@ pnpm seed
 ```bash
 pnpm dev
 ```
+
+## How is it built
+![ER Diagram](./assets/opentasks-erd.svg)
