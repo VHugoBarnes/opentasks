@@ -1,6 +1,17 @@
 ---
-title: Tech Stack used to build OpenTasks
-description: ...
+title: Database used
+description: Learn the database structure used to create OpenTasks
 ---
 
-# Hello
+## PostgreSQL
+
+### User model
+### Task model
+### Organization model
+### Space model
+### List model
+### TaskComment model
+### TaskCommentLike model
+### TaskAttachment model
+### TaskAssignee model
+### TaskTracking model

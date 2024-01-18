@@ -1,6 +1,8 @@
 ---
-title: Tech Stack used to build OpenTasks
-description: ...
+title: Frontend and Backend
+description: Learn the architecture used to build both backend and frontend for OpenTasks
 ---
 
-# Hello
+## Frontend
+
+## Backend

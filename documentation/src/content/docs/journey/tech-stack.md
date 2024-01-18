@@ -1,6 +1,11 @@
 ---
-title: Tech Stack used to build OpenTasks
-description: ...
+title: Tech Stack
+description: An overview of the technologies used to build OpenTasks
 ---
+This is how I build OpenTasks.
 
-# Hello
+## Next.js
+
+## Prisma
+
+## PostgreSQL
