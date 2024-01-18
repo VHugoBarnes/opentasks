@@ -4,7 +4,7 @@ description: The API endpoints used to interact with the List in OpenTasks
 ---
 
 In this reference page you will learn how to interact with the List model.
-To learn more about the model, visit the [List model definition page](/journey/database#list-model).
+To learn more about the model, visit the [List model definition page](/journey/database#list).
 
 **Or see this List model schema from Prisma:**
 ```prisma

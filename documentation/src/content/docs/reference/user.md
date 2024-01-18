@@ -4,7 +4,7 @@ description: The API endpoints used to interact with the users in OpenTasks
 ---
 
 The user is one of the central points in OpenTasks, in this reference page you will learn how to interact with the User model.
-To learn more about the User model, visit the [User model definition page](/journey/database#user-model).
+To learn more about the User model, visit the [User model definition page](/journey/database#user).
 
 **Or see this User model schema from Prisma:**
 ```prisma

@@ -4,7 +4,7 @@ description: The API endpoints used to interact with the Space in OpenTasks
 ---
 
 In this reference page you will learn how to interact with the Space model.
-To learn more about the model, visit the [Space model definition page](/journey/database#space-model).
+To learn more about the model, visit the [Space model definition page](/journey/database#space).
 
 **Or see this Space model schema from Prisma:**
 ```prisma

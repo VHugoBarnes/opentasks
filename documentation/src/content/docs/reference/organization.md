@@ -4,7 +4,7 @@ description: The API endpoints used to interact with the Organizations in OpenTa
 ---
 
 The Organization is one of the central points in OpenTasks, in this reference page you will learn how to interact with the model.
-To learn more about the model, visit the [Organization model definition page](/journey/database#organization-model).
+To learn more about the model, visit the [Organization model definition page](/journey/database#organization).
 
 **Or see this Organization model schema from Prisma:**
 ```prisma
