@@ -2,7 +2,7 @@
 OpenTasks is an OpenSource project that lets you and your team manage tasks in a easy way.
 
 ## How it works
-An user can create an organization which can contain different spaces, each space can contain lists, and each list can contain tasks. This way the tasks, which are the core of the application, can be well organized.
+A user can create an organization which can contain different spaces, each space can contain lists, and each list can contain tasks. This way the tasks, which are the core of the application, can be well organized.
 
 Other features includes:   
 - A user can be member of different organizations.   

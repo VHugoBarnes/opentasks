@@ -1,40 +1,13 @@
 ---
-title: List
-description: The API endpoints used to interact with the List in OpenTasks
+title: Auth
+description: The API endpoints used to interact with the users in OpenTasks
 ---
 
-In this reference page you will learn how to interact with the List model.
-To learn more about the model, visit the [List model definition page](/journey/database#list-model).
-
-**Or see this List model schema from Prisma:**
-```prisma
-model List {
-  id          String       @id @default(cuid())
-  name        String
-  slug        String
-  description String
-  icon        ListIcons
-  color       ListColors
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  ListMember  ListMember[]
-}
-
-model ListMember {
-  id String @id @default(cuid())
-
-  space  List   @relation(fields: [listId], references: [id])
-  listId String
-
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
-}
-```
+In this reference page you will learn how to interact with the Auth feature.
 For more information visit the [Database page](/journey/database) to see more information about restrictions, enums and other models.
 
 ---
-
-## Create a List
+## Signup
 ### Request
 ```http
 [POST] https://opentasks-vh.vercel.app/api/user
@@ -81,7 +54,7 @@ The email being sent already exists in the database:
 
 ---
 
-## Manage members in List
+## Signin
 ### Request
 ```http
 [POST] https://opentasks-vh.vercel.app/api/user
@@ -128,7 +101,7 @@ The email being sent already exists in the database:
 
 ---
 
-## Update List details
+## Change password
 ### Request
 ```http
 [POST] https://opentasks-vh.vercel.app/api/user
@@ -175,7 +148,7 @@ The email being sent already exists in the database:
 
 ---
 
-## Delete List
+## Confirm password change
 ### Request
 ```http
 [POST] https://opentasks-vh.vercel.app/api/user
@@ -221,3 +194,4 @@ The email being sent already exists in the database:
 ```
 
 ---
+
