@@ -128,9 +128,9 @@ model List {
   id          String       @id @default(cuid())
   name        String
   slug        String
-  description String
-  icon        ListIcons
-  color       ListColors
+  description String?
+  icon        ListIcons    @default(star)
+  color       ListColors   @default(black)
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
   ListMember  ListMember[]
