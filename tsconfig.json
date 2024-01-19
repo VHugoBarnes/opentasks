@@ -44,6 +44,12 @@
       "@task/*": [
         "./src/task/*"
       ],
+      "@auth/*": [
+        "./src/auth/*"
+      ],
+      "@shared/*": [
+        "./src/shared/*"
+      ],
     }
   },
   "include": [
