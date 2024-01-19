@@ -39,8 +39,17 @@ export const signup = async (signupUser: SignupUser) => {
       password: bcryptjs.hashSync(password, 10)
     });
 
+    if (!user) {
+      return {
+        ok: false,
+        message: "[fail-creating-user]",
+        data: null
+      };
+    }
+
     const orgResponse = await createOrganization({
       name: `${data.username} Organization`,
+      userId: user?.id
     });
 
     if (!orgResponse) {
