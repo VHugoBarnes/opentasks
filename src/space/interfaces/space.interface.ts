@@ -8,5 +8,5 @@ export interface Space {
   icon: SpaceIcon;
   color: SpaceColor;
   createdAt: Date;
-  updatedAt?: Date;
+  updatedAt: Date;
 };

@@ -7,6 +7,12 @@ description: Learn the database structure used to create OpenTasks
 
 ### Enums
 ```prisma
+enum OrganizationRoles {
+  admin
+  user
+  guest
+}
+
 enum SpaceIcons {
   star
   smiley
@@ -100,6 +106,8 @@ model OrganizationMember {
 
   organization   Organization @relation(fields: [organizationId], references: [id])
   organizationId String
+
+  role OrganizationRoles
 
   user   User   @relation(fields: [userId], references: [id])
   userId String

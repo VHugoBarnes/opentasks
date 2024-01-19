@@ -10,6 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum OrganizationRoles {
+  admin
+  user
+  guest
+}
+
 enum SpaceIcons {
   star
   smiley
@@ -90,6 +96,7 @@ model Organization {
   createdAt          DateTime             @default(now())
   updatedAt          DateTime             @updatedAt
   OrganizationMember OrganizationMember[]
+  Space              Space[]
 }
 
 model OrganizationMember {
@@ -98,20 +105,27 @@ model OrganizationMember {
   organization   Organization @relation(fields: [organizationId], references: [id])
   organizationId String
 
+  role OrganizationRoles
+
   user   User   @relation(fields: [userId], references: [id])
   userId String
 }
 
 model Space {
-  id          String        @id @default(cuid())
+  id          String      @id @default(cuid())
   name        String
   slug        String
   description String?
-  icon        SpaceIcons    @default(smiley)
-  color       SpaceColors   @default(blue)
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  icon        SpaceIcons  @default(smiley)
+  color       SpaceColors @default(blue)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
+
   SpaceMember SpaceMember[]
+  List        List[]
 }
 
 model SpaceMember {
@@ -125,15 +139,20 @@ model SpaceMember {
 }
 
 model List {
-  id          String       @id @default(cuid())
+  id          String     @id @default(cuid())
   name        String
   slug        String
   description String?
-  icon        ListIcons    @default(star)
-  color       ListColors   @default(black)
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  ListMember  ListMember[]
+  icon        ListIcons  @default(star)
+  color       ListColors @default(black)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  space   Space  @relation(fields: [spaceId], references: [id])
+  spaceId String
+
+  ListMember ListMember[]
+  Task       Task[]
 }
 
 model ListMember {
@@ -164,6 +183,9 @@ model Task {
 
   owner   User   @relation(fields: [ownerId], references: [id])
   ownerId String
+
+  list   List   @relation(fields: [listId], references: [id])
+  listId String
 
   TaskAssignees   TaskAssignee[]
   TaskComments    TaskComment[]

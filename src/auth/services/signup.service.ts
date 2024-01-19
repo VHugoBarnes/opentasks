@@ -1,6 +1,9 @@
 import z from "zod";
 import bcryptjs from "bcryptjs";
 import { createUser } from "@/user/services";
+import { createOrganization } from "@/organization/services";
+import { createSpace } from "@/space/services";
+import { createList } from "@/list/services";
 
 interface SignupUser {
   name: string;
@@ -34,6 +37,36 @@ export const signup = async (signupUser: SignupUser) => {
     const user = await createUser({
       ...rest,
       password: bcryptjs.hashSync(password, 10)
+    });
+
+    const orgResponse = await createOrganization({
+      name: `${data.username} Organization`,
+    });
+
+    if (!orgResponse) {
+      return {
+        ok: false,
+        message: "[fail-creating-organization]",
+        data: null
+      };
+    }
+
+    const spaceResponse = await createSpace({
+      name: "New Space",
+      organizationId: orgResponse?.data.organization.id
+    });
+
+    if (!spaceResponse) {
+      return {
+        ok: false,
+        message: "[fail-creating-space]",
+        data: null
+      };
+    }
+
+    await createList({
+      name: "List",
+      spaceId: spaceResponse.data.space.id
     });
 
     // TODO: send email to activate account

@@ -8,6 +8,12 @@ To learn more about the model, visit the [Organization model definition page](/j
 
 **Or see this Organization model schema from Prisma:**
 ```prisma
+enum OrganizationRoles {
+  admin
+  user
+  guest
+}
+
 model Organization {
   id                 String               @id @default(cuid())
   name               String
@@ -22,6 +28,8 @@ model OrganizationMember {
 
   organization   Organization @relation(fields: [organizationId], references: [id])
   organizationId String
+
+  role OrganizationRoles
 
   user   User   @relation(fields: [userId], references: [id])
   userId String

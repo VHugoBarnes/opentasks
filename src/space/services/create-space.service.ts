@@ -1,8 +1,10 @@
 import prisma from "@/lib/prisma";
+import { Organization } from "@/organization/interfaces";
 import { createSlug } from "@/shared/utils";
 
 interface Payload {
   name: string;
+  organizationId: string;
 };
 
 export const createSpace = async (payload: Payload) => {
@@ -11,6 +13,7 @@ export const createSpace = async (payload: Payload) => {
       data: {
         name: payload.name,
         slug: createSlug(payload.name),
+        organizationId: payload.organizationId
       }
     });
 
