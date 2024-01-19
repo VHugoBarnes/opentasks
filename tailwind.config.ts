@@ -5,6 +5,11 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/user/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/organization/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/space/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/list/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/task/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
