@@ -1,9 +1,5 @@
-import { HttpResponseBody, HttpResponseMessages } from "../response";
+import { HttpResponseMessages, HttpResponseBuilder, HttpStatusCode } from "../response";
 
-export const HttpException = (message: HttpResponseMessages): HttpResponseBody<null> => {
-  return {
-    ok: false,
-    data: null,
-    message: message
-  };
+export const HttpException = (message: HttpResponseMessages, status = HttpStatusCode.BadRequest) => {
+  return new HttpResponseBuilder<null>({ data: null, message: message, ok: false }, status).getJson();
 };

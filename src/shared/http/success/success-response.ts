@@ -1,9 +1,5 @@
-import { HttpResponseBody, HttpResponseMessages } from "../response";
+import { HttpResponseMessages, HttpResponseBuilder, HttpStatusCode } from "../response";
 
-export const HttpSuccess = <T>(data: T): HttpResponseBody<T> => {
-  return {
-    ok: false,
-    data: data,
-    message: HttpResponseMessages.success
-  };
+export const HttpSuccess = <T>(data: T, status = HttpStatusCode.Ok) => {
+  return new HttpResponseBuilder<T>({ data: data, message: HttpResponseMessages.success, ok: true }, status).getJson();
 };

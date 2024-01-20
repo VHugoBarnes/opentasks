@@ -1,6 +1,6 @@
-import { HttpResponseMessages } from "../response";
+import { HttpResponseMessages, HttpStatusCode } from "../response";
 import { HttpException } from "./custom.exception";
 
 export const HttpServerErrorException = () => {
-  return HttpException(HttpResponseMessages.serverError);
+  return HttpException(HttpResponseMessages.serverError, HttpStatusCode.InternalServerError);
 };

@@ -15,6 +15,12 @@ export const createUser = async (user: MinUser) => {
         name: user.name,
         password: user.password,
         username: user.username,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        username: true,
       }
     });
 
