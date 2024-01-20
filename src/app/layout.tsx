@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/shared/components/theme-provider";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -19,7 +20,17 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body className={`${openSans.className} bg-background dark:bg-backgroundBlack text-foreground dark:text-foregroundBlack`}>{children}</body>
+      <body className={`${openSans.className}`}>
+        <ThemeProvider
+          attribute="class"
+          themes={["light", "dark"]}
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
