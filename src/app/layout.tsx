@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/shared/components/theme-provider";
 
-const openSans = Open_Sans({ subsets: ["latin"] });
+const roboto = Roboto({ subsets: ["latin"], weight: ["100", "300", "400", "500", "700", "900"] });
 
 export const metadata: Metadata = {
   title: {
@@ -20,7 +20,7 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body className={`${openSans.className}`}>
+      <body className={`${roboto.className}`}>
         <ThemeProvider
           attribute="class"
           themes={["light", "dark"]}
