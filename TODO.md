@@ -73,6 +73,7 @@
 - [ ] UI for displaying lists.   
 - [ ] UI for displaying a list.   
 
+---
 
 - [ ] Service for adding comments, and test.   
 - [ ] UI for adding comments.   
@@ -83,6 +84,7 @@
 - [ ] Service for getting task comments, and test.   
 - [ ] UI for displaying task comments.   
 
+---
 
 - [ ] Service for toggle liking a comment.   
 - [ ] UI for liking a comment.   
