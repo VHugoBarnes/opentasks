@@ -9,6 +9,10 @@ import * as z from "zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@shared/components/ui/form";
 import { Button } from "@shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
+import { useQuery } from "@tanstack/react-query";
+
+import { signIn } from "@/auth.config";
+import { loginApi } from "@/shared/http/api/auth.api";
 
 const FormSchema = z.object({
   email: z.string().email("Not a valid email address."),
@@ -24,13 +28,27 @@ export function LoginForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  const { } = useQuery({
+    queryKey: ["login"],
+    queryFn: () => { },
+    enabled: false,
+    refetchOnWindowFocus: false
+  });
 
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    console.log("HELLO");
+    const success = await loginApi(data.email, data.password);
+
+    console.log({ success });
+
+    if (success) {
+      window.location.replace("/home");
+    }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="email"
