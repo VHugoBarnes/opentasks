@@ -1,7 +1,7 @@
 # Auth
 
-- [ ] See diference between form inputs and inputs (shadcn).   
-- [ ] Create layout for auth routes.   
+- [X] See diference between form inputs and inputs (shadcn).   
+- [X] Create layout for auth routes.   
 - [ ] Create form for Login and Register and call respective API endpoints.   
   - [ ] When creating account, login and pass to protected route.   
 - [ ] Check that every route besides auth ones are protected.   
