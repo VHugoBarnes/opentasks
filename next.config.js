@@ -4,7 +4,7 @@ const nextConfig = {
     // Exclude the documentation folder from being processed by webpack
     if (!isServer) {
       config.module.rules.push({
-        test: /documentation/,
+        test: /\/documentation\//,
         loader: "ignore-loader",
       });
     }
