@@ -8,10 +8,10 @@ import * as z from "zod";
 
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@shared/components/ui/form";
 import { Button } from "@shared/components/ui/button";
-import { Input } from "@/shared/components/ui/input";
+import { Input } from "@shared/components/ui/input";
 
-import { loginApi } from "@/shared/http/api/auth.api";
-import { ALink } from "@/shared/components/ui/typography/a-link";
+import { loginApi } from "@shared/http/api";
+import { ALink } from "@shared/components/ui/typography/a-link";
 
 const FormSchema = z.object({
   email: z.string().email("Not a valid email address."),
