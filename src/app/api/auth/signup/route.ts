@@ -3,7 +3,7 @@ import z from "zod";
 import { SignUpValidation } from "@/auth/dto";
 import { signup } from "@auth/services";
 import { HttpSuccess } from "@shared/http/success";
-import { HttpBadRequestException } from "@shared/http/exceptions";
+import { HttpBadRequestException, HttpNotFoundException } from "@shared/http/exceptions";
 
 export async function POST(request: Request): Promise<Response> {
   const req = await request.json();
@@ -11,7 +11,7 @@ export async function POST(request: Request): Promise<Response> {
   const parsedUser = z.object(SignUpValidation).safeParse(req);
 
   if (!parsedUser.success) {
-    return HttpBadRequestException();
+    return HttpNotFoundException();
   }
 
   const data = parsedUser.data;

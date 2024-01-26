@@ -15,7 +15,6 @@ export const registerApi = async (signupDto: SignUpDto): Promise<RegisterRespons
     const parsedUser = z.object(SignUpValidation).safeParse(signupDto);
 
     if (!parsedUser.success) {
-      console.error("From frontend!");
       return {
         ok: false,
         data: null,
