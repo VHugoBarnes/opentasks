@@ -9,9 +9,9 @@ import * as z from "zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@shared/components/ui/form";
 import { Button } from "@shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
-
-import { registerApi } from "@/shared/http/api";
 import { ALink } from "@/shared/components/ui/typography/a-link";
+
+import { registerApi, loginApi } from "@/shared/http/api";
 
 const FormSchema = z.object({
   name: z.string().min(2, "The minimum length is 2 characters."),
@@ -32,7 +32,6 @@ export function RegisterForm() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log("HELLO");
     const success = await registerApi({
       email: data.email,
       name: data.name,
@@ -40,10 +39,13 @@ export function RegisterForm() {
       password: data.password
     });
 
-    console.log({ success });
-
     if (success.ok) {
-      window.location.replace("/home");
+      // Login
+      const loggedIn = await loginApi(data.email, data.password);
+
+      if (loggedIn) {
+        window.location.replace("/home");
+      }
     }
   }
 
