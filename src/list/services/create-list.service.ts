@@ -5,6 +5,7 @@ import { Space } from "@/space/interfaces";
 interface Payload {
   name: string;
   spaceId: string;
+  userId: string;
 };
 
 export const createList = async (payload: Payload) => {
@@ -14,6 +15,13 @@ export const createList = async (payload: Payload) => {
         name: payload.name,
         slug: createSlug(payload.name),
         spaceId: payload.spaceId
+      }
+    });
+
+    await prisma.listMember.create({
+      data: {
+        listId: newList.id,
+        userId: payload.userId
       }
     });
 

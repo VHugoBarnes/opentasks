@@ -59,7 +59,8 @@ export const signup = async (signupUser: SignupUser) => {
 
     const spaceResponse = await createSpace({
       name: "New Space",
-      organizationId: orgResponse?.data.organization.id
+      organizationId: orgResponse?.data.organization.id,
+      userId: user.id
     });
 
     if (!spaceResponse) {
@@ -72,7 +73,8 @@ export const signup = async (signupUser: SignupUser) => {
 
     await createList({
       name: "List",
-      spaceId: spaceResponse.data.space.id
+      spaceId: spaceResponse.data.space.id,
+      userId: user.id
     });
 
     // TODO: send email to activate account
