@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 9999",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start -p 9999",
+    "postinstall": "prisma generate",
     "lint": "next lint",
     "seed": "ts-node src/seed/run.ts",
     "test:unit": "vitest __tests__/unit"
