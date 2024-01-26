@@ -5,7 +5,7 @@ import { createUser } from "@/user/services";
 import { createOrganization } from "@/organization/services";
 import { createSpace } from "@/space/services";
 import { createList } from "@/list/services";
-import { SignUpDto } from "../dto";
+import { SignUpValidation } from "../dto";
 
 interface SignupUser {
   name: string;
@@ -16,7 +16,7 @@ interface SignupUser {
 
 export const signup = async (signupUser: SignupUser) => {
   const parsedUser = z
-    .object(SignUpDto)
+    .object(SignUpValidation)
     .safeParse(signupUser);
 
   if (!parsedUser.success) {

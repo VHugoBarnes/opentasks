@@ -9,10 +9,9 @@ import * as z from "zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@shared/components/ui/form";
 import { Button } from "@shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
-import { useQuery } from "@tanstack/react-query";
 
-import { signIn } from "@/auth.config";
 import { loginApi } from "@/shared/http/api/auth.api";
+import { ALink } from "@/shared/components/ui/typography/a-link";
 
 const FormSchema = z.object({
   email: z.string().email("Not a valid email address."),
@@ -28,18 +27,8 @@ export function LoginForm() {
     },
   });
 
-  const { } = useQuery({
-    queryKey: ["login"],
-    queryFn: () => { },
-    enabled: false,
-    refetchOnWindowFocus: false
-  });
-
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log("HELLO");
     const success = await loginApi(data.email, data.password);
-
-    console.log({ success });
 
     if (success) {
       window.location.replace("/home");
@@ -47,39 +36,46 @@ export function LoginForm() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="opentasks@gmail.com" {...field} type="email" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input placeholder="" {...field} type="password" />
-              </FormControl>
-              <FormDescription>
-                Minimum of 8 characters.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
+    <>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="opentasks@gmail.com" {...field} type="email" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input placeholder="" {...field} type="password" />
+                </FormControl>
+                <FormDescription>
+                  Minimum of 8 characters.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Login</Button>
+        </form>
+      </Form>
+      <div>
+        <ALink href="/auth/signup">
+          Don&apos;t have an account? Create one
+        </ALink>
+      </div>
+    </>
   );
 };

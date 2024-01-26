@@ -1,8 +1,15 @@
-import { Logo } from "@/shared/components/logo";
-import { Card } from "@/shared/components/ui/card";
 import React from "react";
+import { Logo } from "@shared/components/logo";
+import { Card } from "@shared/components/ui/card";
+import { auth } from "@/auth.config";
 
-export default function layout({ children }: { children: React.ReactNode }) {
+export default async function layout({ children }: { children: React.ReactNode }) {
+  const session = await auth();
+
+  if (session?.user) {
+    redirect("/home");
+  }
+
   return (
     <main className="p-6 space-y-20">
       <Logo />

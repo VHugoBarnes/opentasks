@@ -9,7 +9,7 @@ export default function LoginPage() {
         <CardTitle>Login</CardTitle>
         <CardDescription>Lorem Ipsum</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-4">
         <LoginForm />
       </CardContent>
     </>
