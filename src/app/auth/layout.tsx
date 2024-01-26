@@ -2,6 +2,7 @@ import React from "react";
 import { Logo } from "@shared/components/logo";
 import { Card } from "@shared/components/ui/card";
 import { auth } from "@/auth.config";
+import { redirect } from "next/navigation";
 
 export default async function layout({ children }: { children: React.ReactNode }) {
   const session = await auth();
